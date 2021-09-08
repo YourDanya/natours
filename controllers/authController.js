@@ -46,7 +46,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   });
 
   const url = `${req.protocol}://${req.get('host')}/me`;
-  console.log(url);
+
   await new Email(newUser, url).sendWelcome();
 
   createSendToken(newUser, 201, res);
@@ -62,7 +62,6 @@ exports.login= catchAsync(async (req, res, next)=>{
 
   const user=await User.findOne({email}).select('+password');
 
-  // console.log(user);
 
   if(!user ||!await user.correctPassword(password, user.password)){
     return next(new AppError('Incorrect email or password', 401));
@@ -182,7 +181,6 @@ exports.forgotPassword=catchAsync( async(req, res, next) =>{
   If you didn't forget your password, please ignore this email`
 
   try{
-    console.log('yes');
     await sendEmail({
       email: user.email,
       subject: 'you password reset token (valid for 10 minutes)',

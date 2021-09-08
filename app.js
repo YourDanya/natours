@@ -5,6 +5,7 @@ const viewRoutes= require('./routes/viewRoutes')
 const bookingRoutes= require('./routes/bookingRoutes')
 const express =require('express');
 const morgan=require('morgan');
+const compression=require('compression')
 const appError=require('./utils/appError')
 const globalErrorHandler= require('./controllers/errorController')
 const app=express();
@@ -94,7 +95,7 @@ const limiter= rateLimit({
 
 app.use(limiter);
 
-
+app.use(compression())
 
 //2) route handlers
 
