@@ -2,7 +2,6 @@ const express=require('express');
 const reviewController=require('./../controllers/reviewController')
 const Tour=require(`./../models/tourModel.js`)
 const authController= require('./../controllers/authController')
-const bookingController= require('../controllers/bookingController2')
 
 const router=express.Router({mergeParams: true});
 
