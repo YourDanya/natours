@@ -49,12 +49,11 @@ app.use(hpp({
 
 //serving static files
 
-
 //test middleware
 
 app.use((req, res, next) =>{
    req.requestedTime=new Date().toISOString();
-   // console.log(req.cookies)
+   console.log(req.cookies)
    next();
 })
 
@@ -109,9 +108,8 @@ app.use('/api/v1/reviews', reviewRouter);
 app.use('/api/v1/bookings', bookingRoutes);
 
 app.all('*', (req, res, next)=>{
-   next(new appError(`can t find ${req.originalUrl} on this server`, 404));
+   next(new appError(`can't find ${req.originalUrl} on this server`, 404));
 });
-
 
 
 app.use(globalErrorHandler);
